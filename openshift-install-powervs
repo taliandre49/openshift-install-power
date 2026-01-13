@@ -60,7 +60,7 @@ EOF
   exit 0
 }
 
-RELEASE_VER=${RELEASE_VER:-"4.15"}
+RELEASE_VER=${RELEASE_VER:-"4.20"}
 ARTIFACTS_REPO=${ARTIFACTS_REPO:-"https://github.com/ocp-power-automation/ocp4-upi-powervs"}
 ARTIFACTS_VERSION=${ARTIFACTS_VERSION:-"main"}
 #ARTIFACTS_VERSION=${ARTIFACTS_VERSION:-"release-$RELEASE_VER"}
@@ -157,6 +157,19 @@ function debug_switch {
 function output {
   cd ./"$ARTIFACTS_DIR"
   $TF output "$output_var"
+}
+
+#-------------------------------------------------------------------------
+# Display environment variable information for user awareness
+#-------------------------------------------------------------------------
+function display_env_info {
+  log "Using RHCOS release version: ${RELEASE_VER}"
+  
+  # Only show how to change if using default
+  if [[ "${RELEASE_VER}" == "4.20" ]]; then
+    echo "  To use a different version: export RELEASE_VER='<version>'"
+  fi
+  echo ""
 }
 
 #-------------------------------------------------------------------------
@@ -1694,6 +1707,9 @@ function main {
 
   [[ -z "$ACTION" ]] && help
   platform_checks
+  if [[ "$ACTION" != "help" ]]; then
+    display_env_info
+  fi
   setup_tools
 
   case "$ACTION" in
