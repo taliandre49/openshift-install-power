@@ -186,7 +186,7 @@ You'll need to place the file in the install directory and name it as **pull-sec
 
     ```
 
-**Note**: If you encounter Terraform related errors during the create command, see ["Known Issues & Troubleshooting"](https://github.com/ocp-power-automation/ocp4-upi-powervs/blob/main/docs/known_issues.md) and ["TroubleShooting Document"](docs/troubleshooting.md)
+**Note**: If you encounter terraform-related errors during the create command, see ["Known Issues & Troubleshooting"](https://github.com/ocp-power-automation/ocp4-upi-powervs/blob/release-4.6/docs/known_issues.md) and ["TroubleShooting Document"](docs/troubleshooting.md)
 
 ## Advanced Usage
 
